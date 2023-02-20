@@ -1,0 +1,394 @@
+$color-000: #000;
+$color-fff: #ffffff;
+$color-4e5968: #4e5968;
+$color-357dea: #357dea;
+$color-7e84a7: #7e84a7;
+$color-66c11e: #66c11e;
+$color-c11e1e: #c11e1e;
+$color-f3f7ff: #f3f7ff;
+$color-919191: #919191;
+$color-EBBD46: #ebbd46;
+$color-7469F2: #7469f2;
+$color-EB4646: #eb4646;
+$color-FFECEC: #ffecec;
+$color-32DD4D: #32dd4d;
+$color-CFFFEB: #cfffeb;
+$color-E1B929: #e1b929;
+$color-FFF5EC: #fff5ec;
+$color-297EE1: #297ee1;
+$color-ECF0FF: #ecf0ff;
+$color-8F46EB: #8f46eb;
+$color-F4ECFF: #f4ecff;
+$color-55ba6b: #55ba6b;
+$color-94e9a6: #94e9a6;
+$color-343434: #343434;
+$color-4e5868: #4e5868;
+$color-fbeeaa: #fbeeaa;
+$color-eef4ff: #eef4ff;
+$color-fff3ec: #fff3ec;
+$color-17c079: #17c079;
+$color-ea6e39: #ea6e39;
+$color-b9b9b9: #b9b9b9;
+$color-ff5656: #ff5656;
+$color-ead9ff: #ead9ff;
+$color-ead9ff: #f5dc61;
+$color-ead9ff: #fff2cc;
+$color-7a7a7a: #7a7a7a;
+// color: #343434;
+$color-EB9546: #eb9546;
+$color-343434: #343434;
+$color-4a5571: #4a5571;
+$color-e6e6e6: #e6e6e6;
+$color-edf1f7: #edf1f7;
+$color-064ed1: #064ed1;
+$color-ada7a7: #ada7a7;
+$color-3057ff: #3057ff;
+$color-495057: #495057;
+$color-4e5057: #4e5868;
+$color-2196f3: #2196f3;
+$color-171717: #171717;
+$color-4e5968: #4e5968;
+$color-212121: #212121;
+$color-357dea: #357dea;
+$color-1e90ff: #1e90ff;
+$color-c4c4c4: #c4c4c4;
+$color-9CC4FF: #9cc4ff;
+$color-ecf2ff: #ecf2ff;
+$color-b4efc0: #b4efc0;
+$color-f2f2f2: #f2f2f2;
+$color-E1ECFF: #e1ecff;
+$color-68C959: #68c959;
+$color-7e84a7: #7e84a7;
+$color-009918: #009918;
+$color-ffe600: #ffe600;
+$color-136D21: #136D21;
+$color-562110: #562110;
+$color-e0e4eb: #e0e4eb;
+$color-ffc00f: #ffc00f;
+$color-FC9023: #FC9023;
+
+.color-000 {
+  color: $color-000;
+}
+
+.color-e0e4eb {
+  color: $color-e0e4eb;
+}
+
+.color-136D21 {
+  color: $color-136D21;
+}
+
+.color-562110 {
+  color: $color-562110;
+}
+
+.color-7e84a7 {
+  color: $color-7e84a7;
+}
+
+.color-357dea {
+  color: $color-357dea;
+}
+
+.color-3057ff {
+  color: $color-3057ff;
+}
+
+.color-fff {
+  color: $color-fff;
+}
+
+.color-red {
+  color: red;
+}
+
+.color-66c11e {
+  color: $color-66c11e;
+}
+
+.color-c11e1e {
+  color: $color-c11e1e;
+}
+
+.color-7e84a7 {
+  color: $color-7e84a7;
+}
+
+.color-4e5968 {
+  color: $color-4e5968;
+}
+
+.color-357dea {
+  color: $color-357dea  !important;
+}
+
+.color-343434 {
+  color: $color-343434;
+}
+
+.color-EBBD46 {
+  color: $color-EBBD46;
+}
+
+.color-EBBD46 {
+  color: $color-EBBD46;
+}
+
+.color-7e84a7 {
+  color: $color-7e84a7  !important;
+}
+
+.color-7469F2 {
+  color: $color-7469F2;
+}
+
+.color-55ba6b {
+  color: $color-55ba6b;
+}
+
+.color-4e5868 {
+  color: $color-4e5868;
+}
+
+.color-4e5868 {
+  color: $color-4e5868;
+}
+
+.color-064ed1 {
+  color: $color-064ed1;
+}
+
+.color-495057 {
+  color: $color-495057;
+}
+
+.color-4e5057 {
+  color: $color-4e5057;
+}
+
+.color-2196f3 {
+  color: $color-2196f3;
+}
+
+.color-212121 {
+  color: $color-212121;
+}
+
+//
+.color-EB4646 {
+  color: $color-EB4646;
+}
+
+.color-32DD4D {
+  color: $color-32DD4D;
+}
+
+.color-E1B929 {
+  color: $color-E1B929;
+}
+
+.color-297EE1 {
+  color: $color-297EE1;
+}
+
+.color-8F46EB {
+  color: $color-8F46EB;
+}
+
+.color-919191 {
+  color: $color-919191  !important;
+}
+
+.color-009918 {
+  color: $color-009918;
+}
+
+.color-EB9546 {
+  color: $color-EB9546;
+}
+
+.color-343434 {
+  color: $color-343434  !important;
+}
+
+.color-4a5571 {
+  color: $color-4a5571  !important;
+}
+
+.color-17c079 {
+  color: $color-17c079;
+}
+
+.color-ea6e39 {
+  color: $color-ea6e39;
+}
+
+.color-b9b9b9 {
+  color: $color-b9b9b9  !important;
+}
+
+.color-8F46EB {
+  color: $color-8F46EB;
+}
+
+.color-ff5656 {
+  color: $color-ff5656;
+}
+
+.color-7a7a7a {
+  color: $color-7a7a7a;
+}
+
+.color-ada7a7 {
+  color: $color-ada7a7;
+}
+
+.color-3057ff {
+  color: $color-3057ff;
+}
+
+.color-171717 {
+  color: $color-171717;
+}
+
+.color-4e5968 {
+  color: $color-4e5968;
+}
+
+.color-1e90ff {
+  color: $color-1e90ff;
+}
+
+.color-c4c4c4 {
+  color: $color-c4c4c4  !important;
+}
+
+.color-9CC4FF {
+  color: $color-9CC4FF;
+}
+
+.color-68C959 {
+  color: $color-68C959;
+}
+
+.color-ffe600 {
+  color: $color-ffe600;
+}
+
+.color-ffc00f{
+  color: $color-ffc00f;
+}
+
+.color-FC9023{
+  color: $color-FC9023;
+}
+
+//bg-colors
+.bg-f2f2f2 {
+  background-color: $color-f2f2f2  !important;
+}
+
+.bg-68C959 {
+  background-color: $color-68C959;
+}
+
+.bg-ecf2ff {
+  background-color: $color-ecf2ff  !important;
+}
+
+.bg-b4efc0 {
+  background-color: $color-b4efc0;
+}
+
+.bg-FFECEC {
+  background-color: $color-FFECEC;
+}
+
+.bg-e6e6e6 {
+  background-color: $color-e6e6e6;
+}
+
+.bg-CFFFEB {
+  background-color: $color-CFFFEB;
+}
+
+.bg-FFF5EC {
+  background-color: $color-FFF5EC;
+}
+
+.bg-ECF0FF {
+  background-color: $color-ECF0FF;
+}
+
+.bg-F4ECFF {
+  background-color: $color-F4ECFF;
+}
+
+.bg-ead9ff {
+  background-color: $color-ead9ff;
+}
+
+.bg-94e9a6 {
+  background-color: $color-94e9a6;
+}
+
+.bg-7a7a7a {
+  background-color: $color-7a7a7a  !important;
+}
+
+.bg-e1ecff {
+  background-color: $color-E1ECFF;
+}
+
+.bg-000 {
+  background-color: $color-000;
+}
+
+.bg-fff {
+  background-color: $color-fff;
+}
+
+.bg-f3f7ff {
+  background-color: $color-f3f7ff;
+}
+
+.bg-357dea {
+  background-color: $color-357dea  !important;
+}
+
+.bg-ead9ff {
+  background-color: $color-ead9ff;
+}
+
+.bg-fbeeaa {
+  background-color: $color-fbeeaa;
+}
+
+.bg-eef4ff {
+  background-color: $color-eef4ff;
+}
+
+.bg-fff3ec {
+  background-color: $color-fff3ec;
+}
+
+.bg-b9b9b9 {
+  background-color: $color-b9b9b9  !important;
+}
+
+.bg-7469F2 {
+  background-color: $color-7469F2;
+}
+
+.bg-edf1f7 {
+  background-color: $color-edf1f7;
+}
+
+.bg-1e90ff {
+  background-color: $color-1e90ff;
+}
+
+.bg-9CC4FF {
+  background-color: $color-9CC4FF;
+}

@@ -1,0 +1,301 @@
+<template>
+  <DataTable
+    :class="'p-datatable-sm region-rates-table'"
+    class="p-datatable-sm"
+    id="formTable"
+    :value="tableData"
+    :rowClass="rowClass"
+    responsiveLayout="scroll"
+    v-model:expandedRows="expandedRows"
+    v-model:selection="selectedRows"
+    filterDisplay="menu"
+    dataKey="id"
+    :paginator="false"
+    v-model:editingRows="editingRows"
+    @row-edit-save="onRowEditSave"
+    @row-edit-cancel="onRowEditCancel"
+    :rows="10"
+    editMode="row"
+    paginatorTemplate="CurrentPageReport FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink RowsPerPageDropdown"
+    :rowsPerPageOptions="[10, 20, 30]"
+    currentPageReportTemplate="Showing {first}-{last} of {totalRecords} results"
+  >
+    <template #empty><div class="p-3">No data found.</div></template>
+
+    <Column
+      v-for="col of tableColumns"
+      :field="col.field"
+      :header="col.header"
+      :key="col.field"
+      :sortable="col.header != 'Actions' ? true : false"
+      :showFilterMenu="
+        col.header != 'Actions' &&
+        col.header != 'S. No' &&
+        col.header != 'S.No.'
+          ? true
+          : false
+      "
+    >
+      <template #body="slotProps">
+        <span v-if="col.header == 'Actions'">
+          <CustomSpeedDial
+            :dataName="tableDataName"
+            :rowData="slotProps.data"
+            :customDialData="actionsData"
+            :tableName="tableName"
+          />
+        </span>
+        <div v-else-if="col.field === 'createdAt'">
+          {{ dateFormater(slotProps.data[col.field]) }}
+        </div>
+        <div v-else-if="slotProps.data[col.field] == 0">
+          {{ slotProps.data[col.field] }}
+        </div>
+        <div v-else>
+          {{ slotProps.data[col.field] || "-" }}
+        </div>
+      </template>
+    </Column>
+  </DataTable>
+</template>
+
+<script>
+import DataTable from "primevue/datatable";
+import Column from "primevue/column";
+import CustomSpeedDial from "./CustomSpeedDial.vue";
+import { actions, editAction } from "../const.js";
+import moment from "moment";
+
+export default {
+  components: {
+    DataTable,
+    Column,
+    CustomSpeedDial,
+  },
+  props: [
+    "rowEditor",
+    "expansion",
+    "type",
+    "transport",
+    "tableDataName",
+    "tableName",
+    "tableClass",
+    "tableData",
+    "overlayData",
+    "apiKey",
+    "tableColumns",
+    "storePath",
+    "globalSearchString",
+    "paginator",
+    "selectionModeState",
+    "formTableDataName",
+    "isloading",
+    "editAction",
+  ],
+  data() {
+    return {
+      editingRows: [],
+      actionsData: actions,
+    };
+  },
+  methods: {
+    dateFormater(data) {
+      if (!data) return "-";
+      let date = moment(data).format("DD MMM, YYYY");
+
+      if (date === "Invalid date") {
+        return data;
+      } else {
+        return date;
+      }
+    },
+  },
+  created() {
+    if (this.$props.editAction) {
+      this.actionsData = editAction;
+    } else {
+      this.actionsData = actions;
+    }
+  },
+};
+</script>
+
+<style lang="scss" scoped>
+@import "~@/assets/scss/main.scss";
+
+:deep .invalid-field .p-checkbox .p-checkbox-box {
+  border: 1.5px solid #f44336 !important;
+}
+
+:deep .p-datatable-table {
+  border-collapse: separate !important;
+  border-spacing: 0 0.5rem !important;
+}
+
+:deep .p-datatable-thead > tr > th {
+  padding: 1rem !important;
+}
+
+:deep .p-datatable-tbody > tr > td {
+  padding: 1rem !important;
+}
+
+::v-deep .deleted_row {
+  background-color: #fff2f2 !important;
+}
+
+::v-deep .card {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+::v-deep .contract-table.p-card .p-card-body {
+  padding: 0 !important;
+}
+
+:deep .p-column-filter-menu {
+  margin-left: unset !important;
+}
+.p-paginator-page {
+  background: #357dea;
+  border-radius: 5px;
+}
+::v-deep .contract-table.p-datatable-thead > tr > th {
+  background-color: #fff !important;
+  border: none !important;
+  font-family: $font-family-primary;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 28px;
+  letter-spacing: 0px;
+  text-align: left;
+  padding: 0 !important;
+}
+::v-deep .p-datatable-row-expansion {
+  background: rgba(197, 220, 255, 0.62) !important;
+  // opacity: 0.5;
+}
+::v-deep .express-contract-table-expansion .p-datatable-row-expansion {
+  background: #fff !important;
+}
+::v-deep
+  .express-contract-table-expansion
+  .p-datatable
+  .p-datatable-thead
+  > tr
+  > th {
+  background: transparent !important;
+  border: none !important;
+}
+// ::v-deep .express-contract-table-expansion .p-datatable.p-datatable-hoverable-rows .p-datatable-tbody > tr:not(.p-highlight):hover{
+//   background: transparent !important;
+// }
+
+.contract-table .p-datatable-tbody > tr > td {
+  font-family: "Montserrat", sans-serif;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 15px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: #4e5968;
+  word-wrap: break-word !important;
+  width: 0px !important;
+  padding: 0px !important;
+}
+::v-deep .p-column-title {
+  font-family: "Montserrat", sans-serif;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 15px;
+  letter-spacing: 0.03em;
+  text-align: left !important;
+  color: #7e84a7;
+}
+::v-deep .p-paginator {
+  background: #edf1f7 !important;
+  border: 0 !important;
+  width: 100% !important;
+}
+::v-deep .p-datatable .p-paginator-bottom {
+  margin-top: 30px !important;
+  margin-bottom: 20px !important;
+}
+::v-deep .p-paginator .p-paginator-pages .p-paginator-page.p-highlight {
+  background: #357dea;
+  border-radius: 5px;
+  color: #fff;
+}
+::v-deep .p-paginator .p-paginator-current {
+  font-family: $font-family-primary;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 20px;
+  letter-spacing: 0px;
+  text-align: left;
+  color: #4e5968;
+  position: absolute;
+  left: 0;
+}
+::v-deep .p-paginator .p-dropdown {
+  position: absolute;
+  right: 0;
+}
+::v-deep .p-paginator-icon {
+  background: #fff;
+  border-radius: 5px;
+  padding: 10px;
+}
+::v-deep .pi {
+  font-size: 12px !important;
+}
+.rate_items {
+  color: #5f98ee;
+  font-weight: bolder;
+}
+.issue {
+  font-weight: bold !important;
+}
+.rate_settings {
+  color: #6b9fef;
+  font-weight: bolder;
+}
+.rate-default-badge {
+  background: #fff8e2;
+  color: #f0bd76;
+  border-radius: 2px;
+  padding: 0.25em 0.5rem;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.3px;
+}
+.rate-private-badge {
+  background: #ecffeb;
+  color: #4b9149;
+  border-radius: 2px;
+  padding: 0.25em 0.5rem;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.3px;
+}
+
+.add-destination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #357dea;
+  font-size: 12px;
+}
+
+:deep .p-datatable-thead > tr > th {
+  padding: 1rem 0.5rem !important;
+  background-color: unset !important;
+
+  &:hover {
+    background-color: unset !important;
+  }
+}
+</style>

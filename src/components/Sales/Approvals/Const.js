@@ -1,0 +1,38 @@
+export const ApprovalMainTabMenuData = [
+  {
+    label: "ApprovalsContractTab",
+    tab: "DataTable",
+    select: true,
+    tabName: "Contract",
+    data: "approvalsTableData",
+    columns: "approvalsTableColumnData",
+    store: "salesApproval",
+  },
+  {
+    label: "ApprovalsTerminationTab",
+    tab: "TerminationDataTable",
+    select: false,
+    tabName: "Termination",
+    data: "terminationTableData",
+    columns: "terminationTableColumnData",
+    store: "salesApproval",
+  },
+  {
+    label: "ApprovalsCompanyDetails",
+    tab: "DataTable",
+    select: false,
+    tabName: "Company Details",
+    data: "companydetailsTableData",
+    columns: "companydetailsTableColumnData",
+    store: "salesApproval",
+  },
+  {
+    label: "ApprovalsRateAdjustment",
+    tab: "DataTable",
+    select: false,
+    tabName: "Rate Adjustment",
+    data: "rateAdjustmentTableData",
+    columns: "rateAdjustmentTableColumnData",
+    store: "salesApproval",
+  },
+];

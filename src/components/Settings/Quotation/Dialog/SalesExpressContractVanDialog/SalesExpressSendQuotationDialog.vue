@@ -1,0 +1,399 @@
+<template>
+  
+  <!-- Van -->
+    <div class="flex flex-column time_content pb-5 pl-2 pr-2 pt-2 ml-2 mr-4">
+      <div class="flex">
+        <div class="flex flex-row">
+          <div class="flex">
+            <CheckBox
+              v-bind:categories="[
+                {
+                  name: 'Effective',
+                  key: 'a',
+                },
+              ]"
+            />
+          </div>
+          <div class="flex">
+            <span class="effect_text">Effective Start Date (Tentative)</span>
+          </div>
+        </div>
+      </div>
+      <div clas="flex">
+        <div class="white_content p-2 calendar_content">
+          <Calendar
+            dateFormat="d MM yy"
+            class="quotation_calendar"
+            id="icon"
+            v-model="details.van.effective_date"
+            :showIcon="true"
+            style="width: 100%"
+            :monthNavigator="true"
+            :yearNavigator="true"
+            yearRange="1950:2050"
+          />
+        </div>
+      </div>
+      <div class="flex mt-2">
+        <div class="flex flex-row check_content">
+          <div class="flex">
+            <CheckBox
+              v-bind:categories="[
+                {
+                  name: 'Effective',
+                  key: 'a',
+                },
+              ]"
+            />
+          </div>
+          <div class="flex check_content">
+            <span class="check_text">First Month</span>
+          </div>
+        </div>
+      </div>
+      <div class="flex mt-2">
+        <div class="white_content p-3 calendar_content">
+          <div class="flex flex-row">
+            <div class="flex">
+              <RadioButton
+                id="chargeUsageOnly"
+                name="chargeUsageOnly"
+                value="Charge Usage Only"
+                v-model="details.van.first_month"
+              />
+              <label class="radio_text ml-2" for="chargeUsageOnly"
+                >Charge Usage Only</label
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="flex mt-2">
+        <div class="white_content p-3 calendar_content">
+          <div class="flex flex-row">
+            <div class="flex">
+              <RadioButton
+                id="chargeMinium"
+                name="chargeMinium"
+                value="Charge Minimum"
+                v-model="details.van.first_month"
+              />
+              <label class="radio_text ml-2" for="chargeUsageOnly"
+                >Charge Minimum</label
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="flex">
+        <div class="form_parent_div form_content">
+          <div class="formgrid grid mt-4">
+            <div class="field col-12 md:col-6">
+              <h5 class="required dialog-label-text" placeholder="0.00">
+                Minimum Qty
+              </h5>
+              <TextField
+                label="min_qty"
+                type="number"
+                v-model="details.van.min_qty"
+                @blur="v$.details.van.min_qty.$model;"
+                :classes="{
+                  'p-invalid': v$.details.van.min_qty.$invalid && submitted,
+                  'inputfield w-full dialog-field-text py-2': true,
+                }"
+              />
+            </div>
+            <div class="field col-12 md:col-6">
+              <h5 class="required dialog-label-text" placeholder="0.00">
+                Amount
+              </h5>
+              <TextField
+                label="min_amount"
+                type="number"
+                v-model="details.van.min_amount"
+                @blur="v$.details.van.min_amount.$model;"
+                :classes="{
+                  'p-invalid': v$.details.van.min_amount.$invalid && submitted,
+                  'inputfield w-full dialog-field-text py-2': true,
+                }"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-column pb-4 pl-2 pr-2 pt-2 ml-2 mt-2">
+      <div class="row">
+        <div class="col-12 text">
+          <span class="ml-3"> Contract settings </span>
+        </div>
+      </div>
+    </div>
+    <span class="ml-2 contact_txt">Contact Person</span>
+    <div class="row ml-1 table_div">
+      <div class="col-12">
+        <FormTable
+          :tableData="
+            $store.state.sales &&
+            $store.state.sales.expressQuotationContactsTableData &&
+            $store.state.sales.expressQuotationContactsTableData
+              ? $store.state.sales.expressQuotationContactsTableData
+              : []
+          "
+        />
+      </div>
+    </div>
+
+    <div class="formgrid grid">
+      <div class="field col-12 md:col-12">
+        <h5 class="required dialog-label-text">Remarks</h5>
+        <TextAreaField
+          label="remarks"
+          v-model="details.van.remarks"
+          @blur="v$.details.van.remarks.$model;"
+          :classes="{
+            'p-invalid': v$.details.van.remarks.$invalid && submitted,
+            'inputfield w-full dialog-field-text py-2': true,
+          }"
+        />
+      </div>
+    </div>
+    <div class="flex flex-column pb-4 pl-2 pr-2 pt-2 ml-2 mt-2">
+      <div class="row">
+        <div class="col-12 text">
+          <span class="ml-3"> Contract settings </span>
+        </div>
+      </div>
+    </div>
+    <span class="ml-2 contact_txt">Contact Person</span>
+    <div class="row ml-1 table_div">
+      <div class="col-12">
+        <FormTable
+          :tableData="$store.state.quotation.expressQuotationContactsTableData"
+          :tableColumns="
+            $store.state.quotation.expressQuotationContactsTableColumnData
+          "
+        />
+      </div>
+    </div>
+
+    <div class="formgrid grid">
+      <div class="field col-12 md:col-12">
+        <h5 class="required dialog-label-text">Remarks</h5>
+        <TextAreaField
+          label="remarks"
+          v-model="details.FSR.remarks"
+          @blur="v$.details.FSR.remarks.$model;"
+          :classes="{
+            'p-invalid': v$.details.FSR.remarks.$invalid && submitted,
+            'inputfield w-full dialog-field-text py-2': true,
+          }"
+        />
+      </div>
+    </div>
+  <!--DRAG AND DROP UPLOAD-->
+  <!-- <div>
+    <DragAndDropUpload /> -->
+  <!-- <CustomDragDrop /> -->
+  <!-- </div> -->
+  <div class="row ml-1 mt-1 table_div">
+    <div class="formgrid grid pl-2 pr-2">
+      <div
+        class="
+          flex
+          justify-content-between
+          w-full
+          align-content-center
+          py-3
+          flex-wrap
+        "
+      >
+        <Buttons
+          label="Previous"
+          v-on:childToParent="goBack"
+          class="p-button-outlined mr-1 dialog-button-text"
+        />
+        <div class="flex align-self-center justify-content-end">
+          <CancelButton storePath="salesSales" />
+          <Buttons
+            label="Preview"
+            class="p-button-outlined mr-2 dialog-button-text"
+          />
+          <Buttons label="Save" button_class="dialog-button-text" />
+          <Buttons
+            label="Send Quotation Now"
+            button_class="dialog-button-text ml-2"
+            v-on:childToParent="submitData"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+<script>
+import useVuelidate from "@vuelidate/core";
+import { required } from "@vuelidate/validators";
+import RadioButton from "primevue/radiobutton";
+
+export default {
+  name: "SalesExpressSendQuotationDialog",
+  components: { RadioButton },
+
+  data: () => ({
+    date: null,
+    radios: null,
+    SalesDialogCategories: [{ name: "Charge Usage Only", key: "M1" }],
+    Sales2: [{ name: "Charge Minimum", key: "M2" }],
+    defaultTransportType: "Van",
+    detail_type: [
+      { name: "Standard Entry", code: "ut" },
+      { name: "Sample", code: "ss" },
+    ],
+    v$: useVuelidate(),
+    details: {
+      van: {
+        effective_date: "",
+        first_month: "",
+        min_qty: "",
+        min_amount: "",
+        remarks: "",
+      },
+      FSR: {
+        effective_date: "",
+        first_month: "",
+        detail_type: "",
+        unit_price: "",
+        quantity: "",
+        amount: "",
+        description: "",
+        remarks: "",
+      },
+    },
+    submitted: false,
+  }),
+  validations() {
+    return {
+      details: {
+        van: {
+          min_qty: { required },
+          min_amount: { required },
+          remarks: { required },
+        },
+        FSR: {
+          detail_type: { required },
+          unit_price: { required },
+          quantity: { required },
+          amount: { required },
+          description: { required },
+          remarks: { required },
+        },
+      },
+    };
+  },
+  methods: {
+    closeDialog() {
+      this.$store.state["users"].displayDialog = false;
+    },
+    goBack() {
+      this.$store.dispatch("quotation/navigateStepper", {
+        step: "FSRVanCostingDetails",
+      });
+    },
+    submitData() {
+      if (this.v$.$invalid) {
+        this.submitted = true;
+      }
+      if (!this.v$.$invalid) {
+        console.log(this.details);
+        this.$store.state.quotation.quotationDetails.push(this.details);
+        console.log(this.$store.state.quotation.quotationDetails);
+        this.$store.dispatch("quotation/navigateStepper", {
+          step: "FSRVanSendQuotation",
+        });
+      }
+    },
+  },
+  watch: {
+    "$store.state.quotation.addRegionDeliveryTransportType": function () {
+      this.defaultTransportType =
+        this.$store.state.quotation.addRegionDeliveryTransportType;
+    },
+  },
+};
+</script>
+<style scoped>
+.form_content {
+  margin-left: 14% !important;
+}
+.radio_text {
+  color: #343434;
+  font-size: 12px;
+  font-weight: 700;
+  margin-top: 2%;
+}
+::v-deep .quotation_calendar .p-inputtext:enabled:hover {
+  border-color: white !important;
+}
+.quotation_calendar .p-inputtext:enabled:focus {
+  box-shadow: white !important;
+  border-color: white !important;
+}
+::v-deep .quotation_calendar .p-inputtext {
+  border-color: white !important;
+}
+.check_content {
+  margin-left: 14%;
+}
+.calendar_content{
+  margin-left: 15%;
+}
+.form_parent_div {
+  box-sizing: border-box;
+  border-radius: 4px;
+  height: 25%;
+  width: 70%;
+}
+.white_content{
+  background: #ffffff;
+  border: 1px solid #e6e6e6;
+  box-sizing: border-box;
+  border-radius: 4px;
+  height: 25%;
+  width: 67.8%;
+}
+
+.time_content {
+  background: #edf1f7;
+  border-radius: 4px;
+  height: 25%;
+  width: 99.5%;
+}
+.effective {
+  background: #edf1f7;
+  width: 100%;
+  height: 400px;
+  left: 490px;
+  top: 267px;
+}
+
+.contact_txt {
+  font-size: 12px;
+}
+
+.check_text {
+  font-size: 12px;
+  font-weight: bold;
+}
+.check_content {
+  padding-top: 8%;
+}
+span .check_text {
+  margin-top: 0.5rem !important;
+}
+.effect_text {
+  font-size: 12px;
+  font-weight: bold;
+  margin-top: 7%;
+}
+
+</style>
